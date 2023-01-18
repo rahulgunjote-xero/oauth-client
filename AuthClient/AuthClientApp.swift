@@ -1,18 +1,12 @@
-//
-//  AuthClientApp.swift
-//  AuthClient
-//
-//  Created by Rahul Gunjote on 18/1/2023.
-//
-
 import SwiftUI
 
 @main
 struct AuthClientApp: App {
+    @StateObject private var tokenStore = TokenStore()
+
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-            LoginView()
+          LaunchView().environmentObject(tokenStore)
         }
     }
 }

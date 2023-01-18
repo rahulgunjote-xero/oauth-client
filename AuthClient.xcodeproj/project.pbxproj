@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75011487297831D900B62574 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75011486297831D900B62574 /* TokenStore.swift */; };
+		750114892978336F00B62574 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750114882978336F00B62574 /* HomeView.swift */; };
 		75D4CEDA29775DB00020EE1B /* AuthClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4CED929775DB00020EE1B /* AuthClientApp.swift */; };
-		75D4CEDC29775DB00020EE1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4CEDB29775DB00020EE1B /* ContentView.swift */; };
+		75D4CEDC29775DB00020EE1B /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4CEDB29775DB00020EE1B /* LaunchView.swift */; };
 		75D4CEDE29775DB30020EE1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D4CEDD29775DB30020EE1B /* Assets.xcassets */; };
 		75D4CEE129775DB30020EE1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75D4CEE029775DB30020EE1B /* Preview Assets.xcassets */; };
 		75D4CEE829775E6F0020EE1B /* OAuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4CEE729775E6F0020EE1B /* OAuthConfig.swift */; };
@@ -21,9 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75011486297831D900B62574 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
+		750114882978336F00B62574 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		75D4CED629775DB00020EE1B /* AuthClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D4CED929775DB00020EE1B /* AuthClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientApp.swift; sourceTree = "<group>"; };
-		75D4CEDB29775DB00020EE1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		75D4CEDB29775DB00020EE1B /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		75D4CEDD29775DB30020EE1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D4CEE029775DB30020EE1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		75D4CEE729775E6F0020EE1B /* OAuthConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthConfig.swift; sourceTree = "<group>"; };
@@ -71,10 +75,12 @@
 				75D4CEF6297797050020EE1B /* Extensions */,
 				75D4CEF72977976C0020EE1B /* OAuthService */,
 				75D4CED929775DB00020EE1B /* AuthClientApp.swift */,
-				75D4CEDB29775DB00020EE1B /* ContentView.swift */,
+				75D4CEDB29775DB00020EE1B /* LaunchView.swift */,
 				75D4CEE929775E9D0020EE1B /* LoginView.swift */,
 				75D4CEDD29775DB30020EE1B /* Assets.xcassets */,
 				75D4CEDF29775DB30020EE1B /* Preview Content */,
+				75011486297831D900B62574 /* TokenStore.swift */,
+				750114882978336F00B62574 /* HomeView.swift */,
 			);
 			path = AuthClient;
 			sourceTree = "<group>";
@@ -184,15 +190,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75D4CEDC29775DB00020EE1B /* ContentView.swift in Sources */,
+				75D4CEDC29775DB00020EE1B /* LaunchView.swift in Sources */,
 				75D4CEDA29775DB00020EE1B /* AuthClientApp.swift in Sources */,
 				75D4CEEC2977601F0020EE1B /* AuthService.swift in Sources */,
 				75D4CEEA29775E9D0020EE1B /* LoginView.swift in Sources */,
 				75D4CEF4297792A50020EE1B /* URL+Extensions.swift in Sources */,
+				750114892978336F00B62574 /* HomeView.swift in Sources */,
 				75D4CEEE297761320020EE1B /* TokenResponse.swift in Sources */,
 				75D4CEE829775E6F0020EE1B /* OAuthConfig.swift in Sources */,
 				75D4CEF2297763550020EE1B /* Data+Extensions.swift in Sources */,
 				75D4CEF0297762310020EE1B /* AuthError.swift in Sources */,
+				75011487297831D900B62574 /* TokenStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

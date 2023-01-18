@@ -8,6 +8,7 @@ enum AuthError: LocalizedError {
     case callbackMissingCallbackURL
     case errorReturnedFromAuthorize(String)
     case callbackMissingCode
+    case callbackMissingUserId
     case failedToGetTokenEndpoint
     case tokenRequestFailed(Error)
     case unableToParseTokenResponse
@@ -28,6 +29,8 @@ enum AuthError: LocalizedError {
             return "error returned from authorisation request \(message)"
         case .callbackMissingCode:
             return "authorisation response does not include the code"
+        case .callbackMissingUserId:
+          return "authorisation response does not include the user id"
         case .tokenRequestFailed(let error):
             return "unable to get token: \(error.localizedDescription)"
         case .unableToParseTokenResponse:

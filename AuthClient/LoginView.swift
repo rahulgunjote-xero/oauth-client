@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
+  @EnvironmentObject  var tokenStore: TokenStore
   @State private var isLoading = false
   @State private var error: AuthError?
   
@@ -17,7 +18,7 @@ struct LoginView: View {
               AuthService(completion: { res, err in
                 DispatchQueue.main.async {
                   isLoading.toggle()
-                 // modelData.setToken(token: res)
+                  tokenStore.setToken(token: res)
                   error = err
                 }
               }).authenticate()

@@ -12,6 +12,7 @@ final class AuthService: NSObject {
   func authenticate() {
     let challenge = self.generateCodeChallenge()
     var components = URLComponents(url: OAuthConfig.authorizationURI, resolvingAgainstBaseURL: true)
+    let checkState = UUID().uuidString
     components?.queryItems = [
       URLQueryItem(name:"client_id", value: OAuthConfig.clientID),
       URLQueryItem(name:"redirect_uri", value: OAuthConfig.redirectURI.absoluteString),
@@ -19,6 +20,7 @@ final class AuthService: NSObject {
       URLQueryItem(name:"scope", value: OAuthConfig.scope),
       URLQueryItem(name:"code_challenge", value: Data(challenge.utf8).sha256.base64urlEncodedString()),
       URLQueryItem(name:"code_challenge_method", value: "S256"),
+      URLQueryItem(name: "state", value: checkState)
     ]
     guard let authorizationURL = components?.url else {
       self.completion(nil, .failedToSetAuthURL)
@@ -48,7 +50,12 @@ final class AuthService: NSObject {
         return
       }
       
-      self.exchangeCodeForToken(code: code, challenge: challenge)
+      guard let userId = callbackURL.getQueryParam(value: "user_id") else {
+        self.completion(nil, .callbackMissingUserId)
+        return
+      }
+      
+      self.exchangeCodeForToken(code: code, userId: userId, challenge: challenge)
     }
     session.presentationContextProvider = self
     session.prefersEphemeralWebBrowserSession = true
@@ -56,13 +63,13 @@ final class AuthService: NSObject {
     
   }
   
-  private func exchangeCodeForToken(code: String, challenge: String) {
+  private func exchangeCodeForToken(code: String, userId: String, challenge: String) {
     
+    let redirectURI = OAuthConfig.redirectURI.appending(queryItems: [URLQueryItem(name: "user_id", value: userId)])
     var components = URLComponents()
     components.queryItems = [
       URLQueryItem(name:"client_id", value: OAuthConfig.clientID),
-//      URLQueryItem(name:"client_secret", value: "secret"),
-      URLQueryItem(name:"redirect_uri", value: OAuthConfig.redirectURI.absoluteString),
+      URLQueryItem(name:"redirect_uri", value: redirectURI.absoluteString),
       URLQueryItem(name:"grant_type", value: "authorization_code"),
       URLQueryItem(name:"code_verifier", value: challenge),
       URLQueryItem(name:"code", value: code)
@@ -105,7 +112,6 @@ final class AuthService: NSObject {
       .map { _ in challengeChars.randomElement()! }
       .reduce(into: "") { $0.append($1) }
     return challenge
-    //return Data(challenge.utf8).sha256.base64urlEncodedString()
   }
 }
 
